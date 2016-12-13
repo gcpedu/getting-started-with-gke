@@ -1,0 +1,57 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2016-12-13T20:54:38Z
+  generation: 2
+  labels:
+    run: kubeweb-deployment
+  name: kubeweb-deployment
+  namespace: default
+  resourceVersion: "34312"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/kubeweb-deployment
+  uid: 5c946142-c176-11e6-83ee-42010af001fb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: kubeweb-deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: kubeweb-deployment
+    spec:
+      containers:
+      - name: kubeweb-deployment
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        image: us.gcr.io/strong-moose/kubeweb:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  observedGeneration: 2
+  replicas: 1
+  unavailableReplicas: 1
+  updatedReplicas: 1

@@ -1,0 +1,19 @@
+{
+  "name": "getting-started-with-gke",
+  "version": "1.0.0",
+  "description": "Resources for the Getting Started with GKE cloud lab",
+  "main": "server.js",
+  "scripts": {
+    "run": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcpedu/getting-started-with-gke.git"
+  },
+  "author": "Colin Bookman <bookman@google.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcpedu/getting-started-with-gke/issues"
+  },
+  "homepage": "https://github.com/gcpedu/getting-started-with-gke#readme"
+}
